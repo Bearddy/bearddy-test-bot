@@ -56,50 +56,14 @@ async def on_message(message):
 
 
     if message.content == "곰띠님":
-        rand = int(random() * 8) + 1
-        if rand == 1 or rand == 2:
-            await message.channel.send("안녕하세요")
-        elif rand == 3 or rand == 4:
-            await message.channel.send("네 왜부르셨나요")
-        elif rand == 5 or rand == 6:
-            await message.channel.send("좋은하루 보내세요")
-        elif rand == 7 or rand == 8:
-            await message.channel.send("https://www.youtube.com/c/곰띠Bearddy 여기 가셈")
-        elif rand == 9:
-            await message.channel.send("대답하기 싫은데..")
-        
-        
+        await message.channel.send(hi_bearddy())
 
     if message.content == "곰띠님 알려줘 execute":
-        embed = discord.Embed(title="execute 명령어", description=" ", color=0xff00ff)
-
-        embed.add_field(name="execute as <선택자>", value="뒤에 사용할 @s 를 선택해주는 역할합니다", inline=False)
-        embed.add_field(name="execute at <선택자>", value="<선택자>의 좌표를 가져옵니다", inline=False)
-        embed.add_field(name="execute positioned <x> <y> <z>", value="xyz를 설정하게 해줍니다 \n물론 상대좌표 시점좌표도 사용가능합니다", inline=False)
-        embed.add_field(name="execute rotated as <선택자>   또는   execute rotated <yaw> <pitch>", value="<선택자>의 바라보는 방향을 가져오거나 <yaw> <pitch> 를 가져옵니다  \n이것또한 물론 상대랑 시점좌표도 사용가능합니다", inline=False)
-        embed.add_field(name="execute facing entity <선택자>   또는   execute facing <yaw> <pitch>", value="<선택자>를 바라보게하는 방향을 가져오거나 <yaw> <pitch> 쪽을 바라보게하는 방향을 가져옵니다 \n이것또한 상대랑 시점좌표도 사용가능합니다", inline=False)
-        embed.add_field(name="execute if [block/blocks/data/entity/predicate/score]", value="뒤에 조건식이 만족하면(True) run 뒤에 명령어를 실행합니다", inline=False)
-        embed.add_field(name="execute unless [block/blocks/data/entity/predicate/score]", value="뒤에 조건식이 만족하지않으면(False) run 뒤에 명령어를 실행합니다", inline=False)
-        embed.add_field(name="execute anchored [feet/eyes]", value="좌표같은것들을 feet(발) 또는 eyes(눈)을 기초로 하게합니다", inline=False)
-        embed.add_field(name="execute align <좌표축>", value="뒤에 좌표축의 값을 정수화 시킵니다", inline=False)
-        embed.add_field(name="execute store result [score/bossbar/entity/block/storage]", value="run 뒤에 나온값을 [score/bossbar/entity/block/storage] \n이것들중에 선택하신것에다가 저장합니다", inline=False)
-        embed.add_field(name="execute store success [score/bossbar/entity/block/storage]", value="run 뒤가 참이면 [score/bossbar/entity/block/storage] \n이것들중에 선택하신것에다가 1을 저장합니다 \n거짓이면 0을 저장합니다", inline=False)
-
-        embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
-        embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+        embed = cmd_execute_help()
         await message.channel.send(embed=embed)
 
     if message.content.startswith("곰띠님 알려줘 tp"):
-        embed = discord.Embed(title="tp 명령어", description=" ", color=0xff00ff)
-
-        embed.add_field(name="tp [상대좌표/상대좌표]", value="실행자를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시킵니다", inline=False)
-        embed.add_field(name="tp <선택자> [상대좌표/상대좌표]", value="<선택자>를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시킵니다", inline=False)
-        embed.add_field(name="tp <선택자1> <선택자2>", value="<선택자1>을 <선택자2>의 좌표와 바라보는방향으로 이동시킵니다", inline=False)
-        embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자>를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고<yaw> <pitch>로 방향을 바꿉니다 ", inline=False)
-        embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자1>이 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고 <선택자2>를 바라보게 만듭니다", inline=False)
-  
-        embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
-        embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+        embed = cmd_tp_help()
         await message.channel.send(embed=embed)
     
     if message.content.startswith("곰띠님 놀아줘 랜덤숫자 "):
@@ -119,6 +83,60 @@ async def on_message(message):
 
         await message.channel.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
 
+
+
+def hi_bearddy():
+    rand = int(random() * 8) + 1
+    sentece = " "
+
+    if rand == 1 or rand == 2:
+        sentence = "안녕하세요"
+    elif rand == 3 or rand == 4:
+        sentence = "네 왜부르셨나요"
+    elif rand == 5 or rand == 6:
+        sentence = "좋은하루 보내세요"
+    elif rand == 7 or rand == 8:
+        sentence = "https://www.youtube.com/c/곰띠Bearddy 여기 가셈"
+    elif rand == 9:
+        sentence = "대답하기 싫은데.."
+    
+    return sentence
+
+
+def cmd_execute_help():
+    embed = discord.Embed(title="execute 명령어", description=" ", color=0xff00ff)
+
+    embed.add_field(name="execute as <선택자>", value="뒤에 사용할 @s 를 선택해주는 역할합니다", inline=False)
+    embed.add_field(name="execute at <선택자>", value="<선택자>의 좌표를 가져옵니다", inline=False)
+    embed.add_field(name="execute positioned <x> <y> <z>", value="xyz를 설정하게 해줍니다 \n물론 상대좌표 시점좌표도 사용가능합니다", inline=False)
+    embed.add_field(name="execute rotated as <선택자>   또는   execute rotated <yaw> <pitch>", value="<선택자>의 바라보는 방향을 가져오거나 <yaw> <pitch> 를 가져옵니다  \n이것또한 물론 상대랑 시점좌표도 사용가능합니다", inline=False)
+    embed.add_field(name="execute facing entity <선택자>   또는   execute facing <yaw> <pitch>", value="<선택자>를 바라보게하는 방향을 가져오거나 <yaw> <pitch> 쪽을 바라보게하는 방향을 가져옵니다 \n이것또한 상대랑 시점좌표도 사용가능합니다", inline=False)
+    embed.add_field(name="execute if [block/blocks/data/entity/predicate/score]", value="뒤에 조건식이 만족하면(True) run 뒤에 명령어를 실행합니다", inline=False)
+    embed.add_field(name="execute unless [block/blocks/data/entity/predicate/score]", value="뒤에 조건식이 만족하지않으면(False) run 뒤에 명령어를 실행합니다", inline=False)
+    embed.add_field(name="execute anchored [feet/eyes]", value="좌표같은것들을 feet(발) 또는 eyes(눈)을 기초로 하게합니다", inline=False)
+    embed.add_field(name="execute align <좌표축>", value="뒤에 좌표축의 값을 정수화 시킵니다", inline=False)
+    embed.add_field(name="execute store result [score/bossbar/entity/block/storage]", value="run 뒤에 나온값을 [score/bossbar/entity/block/storage] \n이것들중에 선택하신것에다가 저장합니다", inline=False)
+    embed.add_field(name="execute store success [score/bossbar/entity/block/storage]", value="run 뒤가 참이면 [score/bossbar/entity/block/storage] \n이것들중에 선택하신것에다가 1을 저장합니다 \n거짓이면 0을 저장합니다", inline=False)
+
+    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
+    embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+
+    return embed
+
+
+def cmd_tp_help():
+    embed = discord.Embed(title="tp 명령어", description=" ", color=0xff00ff)
+
+    embed.add_field(name="tp [상대좌표/상대좌표]", value="실행자를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시킵니다", inline=False)
+    embed.add_field(name="tp <선택자> [상대좌표/상대좌표]", value="<선택자>를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시킵니다", inline=False)
+    embed.add_field(name="tp <선택자1> <선택자2>", value="<선택자1>을 <선택자2>의 좌표와 바라보는방향으로 이동시킵니다", inline=False)
+    embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자>를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고<yaw> <pitch>로 방향을 바꿉니다 ", inline=False)
+    embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자1>이 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고 <선택자2>를 바라보게 만듭니다", inline=False)
+
+    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
+    embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+
+    return embed
 
 
 
