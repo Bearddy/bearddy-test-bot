@@ -4,6 +4,7 @@ import os
 
 from functions import *
 
+
 client = discord.Client()
 
 
@@ -50,15 +51,19 @@ async def on_message(message):
         await message.channel.send(random_word(message))
     
     if message.content.startswith("곰띠님 투표해줘 "):
+
+        
         vote_list = message.content[9:].split("/")
-        await client.send_message(message.channel, "★투표★ ->" + vote_list[0])
+        embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
+        await message.channel.send(embed=embed)
         
         for i in range(1, len(vote_list)):
-            choose = await client.send_message(message.channel, vote_list[i])
-            await client.add_reaction(choose, '👍')
+            choose = await message.channel.send("```" + str(i) + ". " + vote_list[i] + "```")
+            await choose.add_reaction('👍')
         
 
 
 
 client.run(os.environ['bot_token'])
+
 
