@@ -2,11 +2,13 @@ import discord
 
 from random import *
 
-def cmd_list():
+client = discord.Client()
+
+def cmd_list(message):
     embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
 
     embed.add_field(name="곰띠님", value="랜덤으로 다양하게 말합니다", inline=False)
-    
+    embed.add_field(name="곰띠님 투표해줘 질문/항목1/항목2/항목3....", value="항목1 ~... 마지막 항목까지 투표를 진행합니다", inline=False)
     embed.add_field(name="곰띠님 알려줘 리스트", value="알려줘에 관한 명령어 리스트를 알려줍니다", inline=False)
     embed.add_field(name="곰띠님 놀아줘 리스트", value="놀아줘에 관한 명령어 리스트를 알려줍니다", inline=False)
     
@@ -14,10 +16,10 @@ def cmd_list():
     embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
-    return embed
+    message.channel.send(embed=embed)
 
 
-def tell_list():
+def tell_list(message):
     embed = discord.Embed(title="*곰띠님 알려줘 리스트*", description="　", color=0x00ffff)
         
     embed.add_field(name="곰띠님 알려줘 execute", value="execute 명령어에 대해 설명합니다", inline=False)
@@ -28,10 +30,10 @@ def tell_list():
     embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
-    return embed
+    message.channel.send(embed=embed)
 
 
-def play_list():
+def play_list(message):
     embed = discord.Embed(title="*곰띠님 놀아줘 리스트*", description="　", color=0x00ffff)
         
     embed.add_field(name="곰띠님 놀아줘 랜덤숫자", value="1부터 설정한 값에서 랜덤으로 하나를 배출합니다", inline=False)
@@ -41,10 +43,10 @@ def play_list():
     embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
-    return embed
+    message.channel.send(embed=embed)
 
 
-def hi_bearddy():
+def hi_bearddy(message):
     rand = int(random() * 9) + 1
     sentece = " "
 
@@ -59,10 +61,10 @@ def hi_bearddy():
     elif rand == 9:
         sentence = "대답하기 싫은데.."
     
-    return sentence
+    message.channel.send(sentence)
 
 
-def cmd_execute_help():
+def cmd_execute_help(message):
     embed = discord.Embed(title="execute 명령어", description=" ", color=0xff00ff)
 
     embed.add_field(name="execute as <선택자>", value="뒤에 사용할 @s 를 선택해주는 역할합니다", inline=False)
@@ -80,10 +82,10 @@ def cmd_execute_help():
     embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
-    return embed
+    message.channel.send(embed=embed)
 
 
-def cmd_tp_help():
+def cmd_tp_help(message):
     embed = discord.Embed(title="tp 명령어", description=" ", color=0xff00ff)
 
     embed.add_field(name="tp [상대좌표/상대좌표]", value="실행자를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시킵니다", inline=False)
@@ -95,10 +97,10 @@ def cmd_tp_help():
     embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
-    return embed
+    message.channel.send(embed=embed)
 
 
-def cmd_setblock_help():
+def cmd_setblock_help(message):
     embed = discord.Embed(title="setblock 명령어", description=" ", color=0xff00ff)
     embed.add_field(name="**주의사항**", value="선택하신 위치에 똑같은 블록은 설치를 못합니다   destroy 예외", inline=False)
     embed.add_field(name="setblock [상대좌표/상대좌표] <블록>", value=" 상대좌표 또는 시점좌표로 계산해서 나온결과에 <블록>을 설치합니다", inline=False)
@@ -109,7 +111,7 @@ def cmd_setblock_help():
     embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
-    return embed
+    message.channel.send(embed=embed)
 
 
 def random_num(message):
@@ -121,7 +123,7 @@ def random_num(message):
     elif num < 0 or num > 2147483647:
         answer = "0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ"
 
-    return answer
+    message.channel.send(answer)
 
 
 def random_word(message):
@@ -132,7 +134,21 @@ def random_word(message):
 
     answer = "단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다"
 
-    return answer
+    message.channel.send(answer)
+
+
+def vote(message):
+    vote_list = message.content[9:].split("/")
+
+    message.channel.send(vote_list[0])
+
+    for i in range(1, len(vote_list)):
+        choose = client.send_message(message.channel, "```" + str(i) + ". " + vote_list[i] + "```")
+        client.add_reaction(choose, '👍')
+
+
+    
+    
 
 
 def warn_person(message):
