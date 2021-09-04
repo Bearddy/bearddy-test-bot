@@ -16,73 +16,77 @@ async def on_ready():
     game = discord.Game('곰띠가 오프라인일때 "곰띠님 도와줘"를 입력해보세요')
     await client.change_presence(status=discord.Status.online, activity=game)
 
+
 @client.event
 async def on_message(message):
     
-    if message.content.startswith("곰띠님 도와줘"):
-        embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
+    if message.content == "곰띠님 도와줘":
+        await message.channel.send(embed=cmd_list())
 
-        embed.add_field(name="곰띠님", value="랜덤으로 다양하게 말합니다", inline=False)
-        
-        embed.add_field(name="곰띠님 알려줘 리스트", value="알려줘에 관한 명령어 리스트를 알려줍니다", inline=False)
-        embed.add_field(name="곰띠님 놀아줘 리스트", value="놀아줘에 관한 명령어 리스트를 알려줍니다", inline=False)
-        
+    if message.content == "곰띠님 알려줘 리스트":
+        await message.channel.send(embed=tell_list())
 
-        embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
-        embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
-        await message.channel.send(embed=embed)
-
-    if message.content.startswith("곰띠님 알려줘 리스트"):
-        embed = discord.Embed(title="*곰띠님 알려줘 리스트*", description="　", color=0x00ffff)
-        
-        embed.add_field(name="곰띠님 알려줘 execute", value="execute 명령어에 대해 설명합니다", inline=False)
-        embed.add_field(name="곰띠님 알려줘 tp", value="tp 명령어에 대해 설명합니다", inline=False)
-        
-
-        embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
-        embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
-        await message.channel.send(embed=embed)
-
-    if message.content.startswith("곰띠님 놀아줘 리스트"):
-        embed = discord.Embed(title="*곰띠님 놀아줘 리스트*", description="　", color=0x00ffff)
-        
-        embed.add_field(name="곰띠님 놀아줘 랜덤숫자", value="1부터 설정한 값에서 랜덤으로 하나를 배출합니다", inline=False)
-        embed.add_field(name="곰띠님 놀아줘 랜덤단어", value="단어1, 단어2, 단어3 ..... 중에서 랜덤으로 하나를 배출합니다", inline=False)
-        
-
-        embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
-        embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
-        await message.channel.send(embed=embed)
-
+    if message.content == "곰띠님 놀아줘 리스트":
+        await message.channel.send(embed=play_list())
 
     if message.content == "곰띠님":
         await message.channel.send(hi_bearddy())
 
-    if message.content == "곰띠님 알려줘 execute":
-        embed = cmd_execute_help()
-        await message.channel.send(embed=embed)
+    if message.content.startswith("곰띠님 알려줘 execute"):
+        await message.channel.send(embed=cmd_execute_help())
 
     if message.content.startswith("곰띠님 알려줘 tp"):
-        embed = cmd_tp_help()
-        await message.channel.send(embed=embed)
+        await message.channel.send(embed=cmd_tp_help())
     
     if message.content.startswith("곰띠님 놀아줘 랜덤숫자 "):
-        num = int(message.content[13:])
-        if num < 2147483647 and num > 0 :
-            rand = int(random() * num) + 1
-            await message.channel.send("1 부터 " + str(num) + " 중에서 랜덤으로 " + str(rand) + "이/가 나왔습니다")
-        elif num < 0 or num > 2147483647:
-            await message.channel.send("0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ")
+        await message.channel.send(random_num(message))
 
     if message.content.startswith("곰띠님 놀아줘 랜덤단어 "):
-        arr_list = str(message.content[13:])
+        await message.channel.send(random_word(message))
 
-        list = arr_list.split(', ')
+
+
+
+
+def cmd_list():
+    embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
+
+    embed.add_field(name="곰띠님", value="랜덤으로 다양하게 말합니다", inline=False)
+    
+    embed.add_field(name="곰띠님 알려줘 리스트", value="알려줘에 관한 명령어 리스트를 알려줍니다", inline=False)
+    embed.add_field(name="곰띠님 놀아줘 리스트", value="놀아줘에 관한 명령어 리스트를 알려줍니다", inline=False)
+    
+
+    embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
+    embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+
+    return embed
+
+
+def tell_list():
+    embed = discord.Embed(title="*곰띠님 알려줘 리스트*", description="　", color=0x00ffff)
         
-        rand = int(random() *len(list))
+    embed.add_field(name="곰띠님 알려줘 execute", value="execute 명령어에 대해 설명합니다", inline=False)
+    embed.add_field(name="곰띠님 알려줘 tp", value="tp 명령어에 대해 설명합니다", inline=False)
+    
 
-        await message.channel.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
+    embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
+    embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
+    return embed
+
+
+def play_list():
+    embed = discord.Embed(title="*곰띠님 놀아줘 리스트*", description="　", color=0x00ffff)
+        
+    embed.add_field(name="곰띠님 놀아줘 랜덤숫자", value="1부터 설정한 값에서 랜덤으로 하나를 배출합니다", inline=False)
+    embed.add_field(name="곰띠님 놀아줘 랜덤단어", value="단어1, 단어2, 단어3 ..... 중에서 랜덤으로 하나를 배출합니다", inline=False)
+    
+
+    embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
+    embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+
+    return embed
 
 
 def hi_bearddy():
@@ -139,6 +143,27 @@ def cmd_tp_help():
     return embed
 
 
+def random_num(message):
+    answer = " "
+    num = int(message.content[13:])
+    if num < 2147483647 and num > 0 :
+        rand = int(random() * num) + 1
+        answer = "1 부터 " + str(num) + " 중에서 랜덤으로 " + str(rand) + "이/가 나왔습니다"
+    elif num < 0 or num > 2147483647:
+        answer = "0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ"
+
+    return answer
+
+
+def random_word(message):
+    answer = " "
+    arr_list = str(message.content[13:])
+    list = arr_list.split(', ')
+    rand = int(random() *len(list))
+
+    answer = "단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다"
+
+    return answer
 
 
 client.run(os.environ['bot_token'])
