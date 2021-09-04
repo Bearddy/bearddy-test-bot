@@ -21,7 +21,7 @@ async def on_ready():
 async def on_message(message):
     
     if message.content == "곰띠봇 테스트메시지":
-        await message.channel.send("곰띠봇 ===== //////테스트 메시지 입니다")
+        await message.channel.send("곰띠봇 ===== //////// ------ 테스트 메시지 입니다")
 
     if message.content == "곰띠님 도와줘":
         await message.channel.send(embed=cmd_list())
