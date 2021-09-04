@@ -45,7 +45,7 @@ def play_list():
 
 
 def hi_bearddy():
-    rand = int(random() * 10) + 1
+    rand = int(random() * 9) + 1
     sentece = " "
 
     if rand == 1 or rand == 2:
