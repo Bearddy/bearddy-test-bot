@@ -41,6 +41,9 @@ async def on_message(message):
 
     if message.content.startswith("곰띠님 알려줘 tp"):
         await message.channel.send(embed=cmd_tp_help())
+
+    if message.content.startswith("곰띠님 알려줘 setblock"):
+        await message.channel.send(embed=cmd_setblock_help())
     
     if message.content.startswith("곰띠님 놀아줘 랜덤숫자 "):
         await message.channel.send(random_num(message))
