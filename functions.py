@@ -5,7 +5,7 @@ from random import *
 client = discord.Client()
 
 def cmd_list(message):
-    embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
+    embed = discord.Embed(title="**★명령어 리스트★**", description="　", color=0x00ffff)
 
     embed.add_field(name="곰띠님", value="랜덤으로 다양하게 말합니다", inline=False)
     embed.add_field(name="곰띠님 투표해줘 질문/항목1/항목2/항목3....", value="항목1 ~... 마지막 항목까지 투표를 진행합니다", inline=False)
@@ -20,7 +20,7 @@ def cmd_list(message):
 
 
 def tell_list(message):
-    embed = discord.Embed(title="*곰띠님 알려줘 리스트*", description="　", color=0x00ffff)
+    embed = discord.Embed(title="**★곰띠님 알려줘 리스트★**", description="　", color=0x00ffff)
         
     embed.add_field(name="곰띠님 알려줘 execute", value="execute 명령어에 대해 설명합니다", inline=False)
     embed.add_field(name="곰띠님 알려줘 tp", value="tp 명령어에 대해 설명합니다", inline=False)
@@ -34,7 +34,7 @@ def tell_list(message):
 
 
 def play_list(message):
-    embed = discord.Embed(title="*곰띠님 놀아줘 리스트*", description="　", color=0x00ffff)
+    embed = discord.Embed(title="**★곰띠님 놀아줘 리스트★**", description="　", color=0x00ffff)
         
     embed.add_field(name="곰띠님 놀아줘 랜덤숫자", value="1부터 설정한 값에서 랜덤으로 하나를 배출합니다", inline=False)
     embed.add_field(name="곰띠님 놀아줘 랜덤단어", value="단어1, 단어2, 단어3 ..... 중에서 랜덤으로 하나를 배출합니다", inline=False)
@@ -140,7 +140,7 @@ def random_word(message):
 def vote(message):
     vote_list = message.content[9:].split("/")
 
-    message.channel.send(vote_list[0])
+    message.channel.send("★투표★ ->" + vote_list[0])
 
     for i in range(1, len(vote_list)):
         choose = client.send_message(message.channel, "```" + str(i) + ". " + vote_list[i] + "```")
