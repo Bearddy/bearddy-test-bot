@@ -22,6 +22,7 @@ def tell_list():
         
     embed.add_field(name="곰띠님 알려줘 execute", value="execute 명령어에 대해 설명합니다", inline=False)
     embed.add_field(name="곰띠님 알려줘 tp", value="tp 명령어에 대해 설명합니다", inline=False)
+    embed.add_field(name="곰띠님 알려줘 setblock", value="setblock 명령어에 대해 설명합니다", inline=False)
     
 
     embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
@@ -44,7 +45,7 @@ def play_list():
 
 
 def hi_bearddy():
-    rand = int(random() * 8) + 1
+    rand = int(random() * 10) + 1
     sentece = " "
 
     if rand == 1 or rand == 2:
@@ -90,6 +91,20 @@ def cmd_tp_help():
     embed.add_field(name="tp <선택자1> <선택자2>", value="<선택자1>을 <선택자2>의 좌표와 바라보는방향으로 이동시킵니다", inline=False)
     embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자>를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고<yaw> <pitch>로 방향을 바꿉니다 ", inline=False)
     embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자1>이 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고 <선택자2>를 바라보게 만듭니다", inline=False)
+
+    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
+    embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+
+    return embed
+
+
+def cmd_setblock_help():
+    embed = discord.Embed(title="setblock 명령어", description=" ", color=0xff00ff)
+    embed.add_field(name="**주의사항**", value="선택하신 위치에 똑같은 블록은 설치를 못합니다   destroy 예외", inline=False)
+    embed.add_field(name="setblock [상대좌표/상대좌표] <블록>", value=" 상대좌표 또는 시점좌표로 계산해서 나온결과에 <블록>을 설치합니다", inline=False)
+    embed.add_field(name="setblock [상대좌표/상대좌표] <블록> destroy", value="상대좌표 또는 시점좌표로 계산해서 나온결과에 기존블록을 부시고 <블록>을 설치합니다\n (기존 블록의 아이템을 드랍합니다)", inline=False)
+    embed.add_field(name="setblock [상대좌표/상대좌표] <블록> replace", value="상대좌표 또는 시점좌표로 계산해서 나온결과에 <블록>을 설치합니다\n (기존 블록의 아이템을 드랍합니다)", inline=False)
+    embed.add_field(name="setblock [상대좌표/상대좌표] <블록> keep", value="상대좌표 또는 시점좌표로 계산해서 나온결과의 위치가 공기이면 <블록>을 설치합니다", inline=False)
 
     embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
