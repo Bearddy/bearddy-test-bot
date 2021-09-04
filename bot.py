@@ -4,10 +4,8 @@ import os
 
 from functions import *
 
-
 client = discord.Client()
 
-token = "ODgyNTk2NDQyMzA3NDMyNDg5.YS9r_Q.v3kTFI_0yGR2WfwKMDfAf-vwDmg"
 
 @client.event
 async def on_ready():
@@ -50,11 +48,6 @@ async def on_message(message):
 
     if message.content.startswith("곰띠님 놀아줘 랜덤단어 "):
         await message.channel.send(random_word(message))
-
-
-
-
-
 
 
 
