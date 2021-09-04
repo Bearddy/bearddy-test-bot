@@ -23,34 +23,39 @@ async def on_message(message):
         await message.channel.send("곰띠봇 ===== //////// ------ 테스트 메시지 입니다")
 
     if message.content == "곰띠님 도와줘":
-        cmd_list(message)
+        await message.channel.send(embed=cmd_list())
 
     if message.content == "곰띠님 알려줘 리스트":
-        tell_list(message)
+        await message.channel.send(embed=tell_list())
 
     if message.content == "곰띠님 놀아줘 리스트":
-        play_list(message)
+        await message.channel.send(embed=play_list())
 
     if message.content == "곰띠님":
-        hi_bearddy(message)
+        await message.channel.send(hi_bearddy())
 
     if message.content.startswith("곰띠님 알려줘 execute"):
-        cmd_execute_help(message)
+        await message.channel.send(embed=cmd_execute_help())
 
     if message.content.startswith("곰띠님 알려줘 tp"):
-        cmd_tp_help(message)
+        await message.channel.send(embed=cmd_tp_help())
 
     if message.content.startswith("곰띠님 알려줘 setblock"):
-        cmd_setblock_help(message)
+        await message.channel.send(embed=cmd_setblock_help())
     
     if message.content.startswith("곰띠님 놀아줘 랜덤숫자 "):
-        random_num(message)
+        await message.channel.send(random_num(message))
 
     if message.content.startswith("곰띠님 놀아줘 랜덤단어 "):
-        random_word(message)
+        await message.channel.send(random_word(message))
     
     if message.content.startswith("곰띠님 투표해줘 "):
-        vote(message)
+        vote_list = vote(message)
+        await client.send_message(message.channel, vote_list[0])
+        for i in range(1, len(vote_list)):
+            choose = await client.send_message(message.channel, vote_list[i])
+            await client.add_reaction(choose, '👍')
+        
 
 
 
