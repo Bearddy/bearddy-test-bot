@@ -50,8 +50,9 @@ async def on_message(message):
         await message.channel.send(random_word(message))
     
     if message.content.startswith("곰띠님 투표해줘 "):
-        vote_list = vote(message)
-        await client.send_message(message.channel, vote_list[0])
+        vote_list = message.content[9:].split("/")
+        await client.send_message(message.channel, "★투표★ ->" + vote_list[0])
+        
         for i in range(1, len(vote_list)):
             choose = await client.send_message(message.channel, vote_list[i])
             await client.add_reaction(choose, '👍')
