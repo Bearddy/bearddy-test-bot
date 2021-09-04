@@ -133,3 +133,9 @@ def random_word(message):
     answer = "단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다"
 
     return answer
+
+
+def warn_person(message):
+
+    print("d")
+
