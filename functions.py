@@ -134,17 +134,6 @@ def random_word(message):
 
     return answer
 
-
-def vote(message):
-    vote_list = message.content[9:].split("/")
-
-    temp = "★투표★ ->" + vote_list[0]
-    answer = [temp]
-
-    for i in range(1, len(vote_list)):
-        answer.append("```" + str(i) + ". " + vote_list[i] + "```")
-
-    return answer
         
 
 
