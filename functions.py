@@ -77,7 +77,7 @@ def cmd_execute_help():
     embed.add_field(name="execute store result [score/bossbar/entity/block/storage]", value="run 뒤에 나온값을 [score/bossbar/entity/block/storage] \n이것들중에 선택하신것에다가 저장합니다", inline=False)
     embed.add_field(name="execute store success [score/bossbar/entity/block/storage]", value="run 뒤가 참이면 [score/bossbar/entity/block/storage] \n이것들중에 선택하신것에다가 1을 저장합니다 \n거짓이면 0을 저장합니다", inline=False)
 
-    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
+    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
     return embed
@@ -92,7 +92,7 @@ def cmd_tp_help():
     embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자>를 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고<yaw> <pitch>로 방향을 바꿉니다 ", inline=False)
     embed.add_field(name="tp <선택자> [상대좌표/상대좌표] <yaw> <pitch>", value="<선택자1>이 상대좌표 또는 시점좌표로 계산해서 나온결과로 이동시키고 <선택자2>를 바라보게 만듭니다", inline=False)
 
-    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
+    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
     return embed
@@ -106,7 +106,7 @@ def cmd_setblock_help():
     embed.add_field(name="setblock [상대좌표/상대좌표] <블록> replace", value="상대좌표 또는 시점좌표로 계산해서 나온결과에 <블록>을 설치합니다\n (기존 블록의 아이템을 드랍합니다)", inline=False)
     embed.add_field(name="setblock [상대좌표/상대좌표] <블록> keep", value="상대좌표 또는 시점좌표로 계산해서 나온결과의 위치가 공기이면 <블록>을 설치합니다", inline=False)
 
-    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요")
+    embed.set_footer(text="오류가있을시 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
     embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
     return embed
