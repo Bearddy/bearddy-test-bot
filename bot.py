@@ -10,7 +10,7 @@ bot = commands.Bot(command_prefix='곰띠님 ')
 client = discord.Client()
 
 
-@client.event
+@bot.event
 async def on_ready():
     
     print(client.user.name)
@@ -19,7 +19,7 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=game)
 
 
-@client.event
+@bot.event
 async def on_message(message):
     
     if message.content == "곰띠봇 테스트메시지":
@@ -144,6 +144,6 @@ async def 알려줘(message, *, text):
         message.channel.send(embed=embed)
 
 
-client.run(os.environ['bot_token'])
+bot.run(os.environ['bot_token'])
 
 
