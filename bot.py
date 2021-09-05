@@ -53,7 +53,7 @@ async def on_message(message):
     if message.content.startswith("곰띠님 투표해줘 "):
         
         vote_list = message.content[9:].split("/")
-        if(len(vote_list) > 5):
+        if(len(vote_list) > 6):
             await message.channel.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
         else:
             embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
