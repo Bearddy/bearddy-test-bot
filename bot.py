@@ -186,7 +186,7 @@ async def 채팅청소(ctx: Context, count: int):
             elif count < 0:
                 count *= -1
                 count += 1
-                await ctx.purge(limit=count)
+                await ctx.channel.purge(limit=count)
                 await ctx.send(str(count - 1) + "개의 메시지를 청소했습니다")
     else:
         await ctx.send("관리자 권한이 없습니다!")
