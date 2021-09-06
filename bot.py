@@ -151,6 +151,22 @@ async def 놀아줘(message, *, text):
                 await choose.add_reaction('👍')
 
 
+async def 채팅청소(message, *, text):
+    count = int(text)
+    if count < 2147483647 and count > 0 :
+        await message.delete()
+        await message.channel.purge(limit=count)
+        await message.channel.send(str(count) + "개의 메시지를 청소했습니다")
+    elif count < 0 or count > 2147483647:
+        if count > 2147483647:
+            await message.channel.send(answer = "그렇게나 많은 메시지를 지울필요는 없어보이는데요?")
+        elif count < 0:
+            count *= -1
+            await message.delete()
+            await message.channel.purge(limit=count)
+            await message.channel.send(str(count) + "개의 메시지를 청소했습니다")
+        
+
 bot.run(os.environ['bot_token'])
 
 
