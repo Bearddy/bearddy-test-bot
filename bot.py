@@ -3,9 +3,10 @@ import asyncio
 import os
 
 from random import *
-from discord.ext import commands
+from discord.errors import ConnectionClosed
+from discord.ext.commands import Bot, Context
 
-bot = commands.Bot(command_prefix='곰띠님 ')
+bot = Bot(command_prefix='곰띠님 ')
 
 
 @bot.event
@@ -18,23 +19,32 @@ async def on_ready():
 
 
 @bot.command()
-async def 안녕(message):
+async def 안녕(ctx: Context):
+    """
+    랜덤으로 인사를 한다
+    """
+
     rand = int(random() * 9) + 1
 
     if rand == 1 or rand == 2:
-        await message.channel.send("안녕하세요")
+        await ctx.channel.send("안녕하세요")
     elif rand == 3 or rand == 4:
-        await message.channel.send("네 왜부르셨나요")
+        await ctx.channel.send("네 왜부르셨나요")
     elif rand == 5 or rand == 6:
-        await message.channel.send("좋은하루 보내세요")
+        await ctx.channel.send("좋은하루 보내세요")
     elif rand == 7 or rand == 8:
-        await message.channel.send("https://www.youtube.com/c/곰띠Bearddy 여기 가셈")
+        await ctx.channel.send("https://www.youtube.com/c/곰띠Bearddy 여기 가셈")
     elif rand == 9:
-        await message.channel.send("대답하기 싫은데..")
+        await ctx.channel.send("대답하기 싫은데..")
 
 
 @bot.command()
 async def 도와줘(message):
+
+    """
+    명령어 리스트를 알려준다
+    """
+
     embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
 
     embed.add_field(name="곰띠님 안녕", value="랜덤으로 다양하게 말합니다", inline=False)
@@ -49,6 +59,11 @@ async def 도와줘(message):
 
 @bot.command()
 async def 알려줘(message, *, text):
+
+    """
+    곰띠봇이 정보를 알려준다
+    """
+
     if text == "리스트":
         embed = discord.Embed(title="*곰띠님 알려줘 리스트*", description="　", color=0x00ffff)
             
@@ -112,6 +127,10 @@ async def 알려줘(message, *, text):
 
 @bot.command()
 async def 놀아줘(message, *, text):
+    """
+    곰띠봇이 놀아준다
+    """
+
     if text.startswith("리스트"):
         embed = discord.Embed(title="*곰띠님 놀아줘 리스트*", description="　", color=0x00ffff)
         
@@ -153,6 +172,11 @@ async def 놀아줘(message, *, text):
 
 @bot.command()
 async def 채팅청소(message, *, text):
+
+    """
+    채팅청소를 해준다
+    """
+
     if message.author.guild_permissions.administrator:
         count = int(text)
         if count < 2147483647 and count > 0 :
