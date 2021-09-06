@@ -65,7 +65,7 @@ async def 알려줘(ctx):
     """     
     await ctx.send("곰띠님 알려줘 리스트 로 뭐가있는지 확인해보자!")
 
-@알려줘.command(name='리스트', aliases=('list'))
+@알려줘.command(name='리스트')
 async def 알려줘_리스트(ctx: Context):
     embed = discord.Embed(title="*곰띠님 알려줘 리스트*", description="　", color=0x00ffff)
             
@@ -79,7 +79,7 @@ async def 알려줘_리스트(ctx: Context):
 
     await ctx.send(embed=embed)
 
-@알려줘.command(name='execute', aliases=('execute명령어'))
+@알려줘.command(name='execute')
 async def execute_(ctx: Context):
     embed = discord.Embed(title="execute 명령어", description=" ", color=0xff00ff)
 
@@ -100,7 +100,7 @@ async def execute_(ctx: Context):
     
     await ctx.send(embed=embed)
 
-@알려줘.command(name='tp', aliases=('tp명령어'))
+@알려줘.command(name='tp')
 async def tp_(ctx: Context):
     embed = discord.Embed(title="tp 명령어", description=" ", color=0xff00ff)
 
@@ -115,7 +115,7 @@ async def tp_(ctx: Context):
 
     await ctx.send(embed=embed)
 
-@알려줘.command(name='setblock', aliases=('setblock명령어'))
+@알려줘.command(name='setblock')
 async def setblock_(ctx: Context):
     embed = discord.Embed(title="setblock 명령어", description=" ", color=0xff00ff)
     embed.add_field(name="**주의사항**", value="선택하신 위치에 똑같은 블록은 설치를 못합니다   destroy 예외", inline=False)
@@ -138,7 +138,7 @@ async def 놀아줘(ctx: Context):
     """
     await ctx.send("곰띠님 알려줘 리스트 로 뭐가있는지 확인해보자!")
 
-@놀아줘.command(name='리스트', aliases=('list'))
+@놀아줘.command(name='리스트')
 async def 놀아줘_리스트(ctx: Context):
     embed = discord.Embed(title="*곰띠님 놀아줘 리스트*", description="　", color=0x00ffff)
         
