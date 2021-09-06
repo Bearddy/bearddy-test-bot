@@ -134,16 +134,25 @@ async def 놀아줘(message, *, text):
             await message.channel.send(answer = "0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ")
 
     if text.startswith("랜덤단어"):
-        vote_list = text[5:].split("/")
-        if(len(vote_list) > 6):
-            await message.channel.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
-        else:
-            embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
-            await message.channel.send(embed=embed)
-            
-            for i in range(1, len(vote_list)):
-                choose = await message.channel.send("```" + str(i) + ". " + vote_list[i] + "```")
-                await choose.add_reaction('👍')
+        arr_list = str(message.content[5:])
+        list = arr_list.split('/')
+        rand = int(random() *len(list))
+
+        await message.channle.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
+
+
+@bot.command()
+async def 투표해줘(message, *, text):
+    vote_list = text.split("/")
+    if(len(vote_list) > 6):
+        await message.channel.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
+    else:
+        embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
+        await message.channel.send(embed=embed)
+        
+        for i in range(1, len(vote_list)):
+            choose = await message.channel.send("```" + str(i) + ". " + vote_list[i] + "```")
+            await choose.add_reaction('👍')
 
 
 bot.run(os.environ['bot_token'])
