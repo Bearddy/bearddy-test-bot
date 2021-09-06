@@ -133,13 +133,13 @@ async def 놀아줘(message, *, text):
             await message.channel.send(answer = "0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ")
 
     if text.startswith("랜덤단어"):
-        list = text[5:].split("/")
+        list = str(text[5:]).split("/")
         rand = int(random() * len(list))
 
         await message.channel.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
     
     if text.startswith("투표"):
-        vote_list = text[3:].split("/")
+        vote_list = str(text[3:]).split("/")
         if(len(vote_list) > 6):
             await message.channel.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
         else:
