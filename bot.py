@@ -178,7 +178,7 @@ async def 채팅청소(ctx: Context, count: int):
     if ctx.author.guild_permissions.administrator:
         if count < 2147483647 and count > 0 :
             count += 1
-            await ctx.channle.purge(limit=count)
+            await ctx.channel.purge(limit=count)
             await ctx.send(str(count - 1) + "개의 메시지를 청소했습니다")
         elif count < 0 or count > 2147483647:
             if count > 2147483647:
