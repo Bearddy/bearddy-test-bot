@@ -37,8 +37,7 @@ async def 안녕(message):
 async def 도와줘(message):
     embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
 
-    embed.add_field(name="곰띠님", value="랜덤으로 다양하게 말합니다", inline=False)
-    embed.add_field(name="곰띠님 투표해줘 질문/항목1/항목2/항목3....", value="항목1 ~... 마지막 항목까지 투표를 진행합니다", inline=False)
+    embed.add_field(name="곰띠님 안녕", value="랜덤으로 다양하게 말합니다", inline=False)
     embed.add_field(name="곰띠님 알려줘 리스트", value="알려줘에 관한 명령어 리스트를 알려줍니다", inline=False)
     embed.add_field(name="곰띠님 놀아줘 리스트", value="놀아줘에 관한 명령어 리스트를 알려줍니다", inline=False)
     
@@ -118,7 +117,7 @@ async def 놀아줘(message, *, text):
         
         embed.add_field(name="곰띠님 놀아줘 랜덤숫자", value="1부터 설정한 값에서 랜덤으로 하나를 배출합니다", inline=False)
         embed.add_field(name="곰띠님 놀아줘 랜덤단어", value="단어1, 단어2, 단어3 ..... 중에서 랜덤으로 하나를 배출합니다", inline=False)
-        
+        embed.add_field(name="곰띠님 놀아줘 투표 질문/항목1/항목2/항목3....", value="항목1 ~... 마지막 항목까지 투표를 진행합니다", inline=False)
 
         embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
         embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
@@ -134,24 +133,22 @@ async def 놀아줘(message, *, text):
             await message.channel.send(answer = "0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ")
 
     if text.startswith("랜덤단어"):
-        list = str(text.content[5:]).split("/")
+        list = str(text[5:]).split("/")
         rand = int(random() * len(list))
 
         await message.channle.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
-
-
-@bot.command()
-async def 투표해줘(message, *, text):
-    vote_list = text.split("/")
-    if(len(vote_list) > 6):
-        await message.channel.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
-    else:
-        embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
-        await message.channel.send(embed=embed)
-        
-        for i in range(1, len(vote_list)):
-            choose = await message.channel.send("```" + str(i) + ". " + vote_list[i] + "```")
-            await choose.add_reaction('👍')
+    
+    if text.startswith("투표"):
+        vote_list = text.split("/")
+        if(len(vote_list) > 6):
+            await message.channel.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
+        else:
+            embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
+            await message.channel.send(embed=embed)
+            
+            for i in range(1, len(vote_list)):
+                choose = await message.channel.send("```" + str(i) + ". " + vote_list[i] + "```")
+                await choose.add_reaction('👍')
 
 
 bot.run(os.environ['bot_token'])
