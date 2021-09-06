@@ -19,9 +19,6 @@ async def on_ready():
 
 @bot.command()
 async def 안녕(ctx: Context):
-    """
-    랜덤으로 인사를 한다
-    """
 
     rand = int(random() * 9) + 1
 
@@ -40,9 +37,6 @@ async def 안녕(ctx: Context):
 @bot.command()
 async def 도와줘(message):
 
-    """
-    명령어 리스트를 알려준다
-    """
 
     embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
 
@@ -60,10 +54,8 @@ async def 도와줘(message):
 @bot.group(invoke_without_command=True)
 async def 알려줘(ctx):
 
-    """
-    곰띠봇이 정보를 알려준다
-    """     
     await ctx.send("곰띠님 알려줘 리스트 로 뭐가있는지 확인해보자!")
+
 
 @알려줘.command(name='리스트')
 async def 알려줘_리스트(ctx: Context):
@@ -133,10 +125,9 @@ async def setblock_(ctx: Context):
 
 @bot.group(invoke_without_command=True)
 async def 놀아줘(ctx: Context):
-    """
-    곰띠봇이 놀아준다
-    """
+    
     await ctx.send("곰띠님 알려줘 리스트 로 뭐가있는지 확인해보자!")
+
 
 @놀아줘.command(name='리스트')
 async def 놀아줘_리스트(ctx: Context):
@@ -181,12 +172,9 @@ async def vote_(ctx: Context, list: str):
 
 
 
-@bot.command(aliases=('청소'))
+@bot.command()
 async def 채팅청소(ctx: Context, count: int):
 
-    """
-    채팅청소를 해준다
-    """
     if ctx.author.guild_permissions.administrator:
         if count < 2147483647 and count > 0 :
             count += 1
