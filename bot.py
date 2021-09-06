@@ -130,7 +130,7 @@ async def 놀아줘(message, *, text):
             rand = int(random() * num) + 1
             await message.channel.send("1 부터 " + str(num) + " 중에서 랜덤으로 " + str(rand) + "이/가 나왔습니다")
         elif num < 0 or num > 2147483647:
-            await message.channel.send(answer = "0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ")
+            await message.channel.send("0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ")
 
     if text.startswith("랜덤단어"):
         list = str(text[5:]).split("/")
@@ -151,20 +151,25 @@ async def 놀아줘(message, *, text):
                 await choose.add_reaction('👍')
 
 
+@bot.command()
 async def 채팅청소(message, *, text):
-    count = int(text)
-    if count < 2147483647 and count > 0 :
-        await message.delete()
-        await message.channel.purge(limit=count)
-        await message.channel.send(str(count) + "개의 메시지를 청소했습니다")
-    elif count < 0 or count > 2147483647:
-        if count > 2147483647:
-            await message.channel.send(answer = "그렇게나 많은 메시지를 지울필요는 없어보이는데요?")
-        elif count < 0:
-            count *= -1
-            await message.delete()
+    if message.author.guild_permissions.administrator:
+        count = int(text)
+        if count < 2147483647 and count > 0 :
+            count += 1
             await message.channel.purge(limit=count)
-            await message.channel.send(str(count) + "개의 메시지를 청소했습니다")
+            await message.channel.send(str(count - 1) + "개의 메시지를 청소했습니다")
+        elif count < 0 or count > 2147483647:
+            if count > 2147483647:
+                await message.channel.send("그렇게나 많은 메시지를 지울필요는 없어보이는데요?")
+            elif count < 0:
+                count *= -1
+                count += 1
+                await message.channel.purge(limit=count)
+                await message.channel.send(str(count - 1) + "개의 메시지를 청소했습니다")
+    else:
+        await message.channel.send("관리자 권한이 없습니다!")
+
         
 
 bot.run(os.environ['bot_token'])
