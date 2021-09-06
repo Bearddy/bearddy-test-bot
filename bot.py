@@ -136,7 +136,7 @@ async def 놀아줘(message, *, text):
         list = text[5:].split("/")
         rand = int(random() * len(list))
 
-        await message.channle.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
+        await message.channel.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
     
     if text.startswith("투표"):
         vote_list = text.split("/")
