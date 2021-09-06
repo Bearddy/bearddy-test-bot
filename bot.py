@@ -3,7 +3,6 @@ import asyncio
 import os
 
 from random import *
-from discord.errors import ConnectionClosed
 from discord.ext.commands import Bot, Context
 
 bot = Bot(command_prefix='곰띠님 ')
