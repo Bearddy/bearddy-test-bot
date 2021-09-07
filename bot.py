@@ -158,7 +158,7 @@ async def rand_words_(ctx: Context, words: str):
     await ctx.send("단어 리스트중에서 \"" + list[rand] + "\"이/가 나왔습니다")
 
 @놀아줘.command(name='투표')
-async def vote_(ctx: Context, list: str):
+async def vote_(ctx: Context, *, list: str):
     vote_list = list.split("/")
     if(len(vote_list) > 6):
         await ctx.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
