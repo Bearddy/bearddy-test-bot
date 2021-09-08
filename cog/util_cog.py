@@ -35,14 +35,14 @@ class 유용한기능(Cog):
 
         if ctx.author.guild_permissions.administrator:
             if count < 2147483647 and count > 0 :
-                await ctx.channle.purge(limit=count + 1)
+                await ctx.channel.purge(limit=count + 1)
                 await ctx.send(str(count) + "개의 메시지를 청소했습니다")
             elif count < 0 or count > 2147483647:
                 if count > 2147483647:
                     await ctx.send("그렇게나 많은 메시지를 지울필요는 없어보이는데요?")
                 elif count < 0:
                     count *= -1
-                    await ctx.purge(limit=count+1)
+                    await ctx.channel.purge(limit=count+1)
                     await ctx.send(str(count) + "개의 메시지를 청소했습니다")
         else:
             await ctx.send("관리자 권한이 없습니다!")
@@ -56,7 +56,6 @@ class 유용한기능(Cog):
         else:
             embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
             await ctx.send(embed=embed)
-            
             for i in range(1, len(vote_list)):
                 choose = await ctx.send("```" + str(i) + ". " + vote_list[i] + "```")
                 await choose.add_reaction('👍')
