@@ -4,7 +4,7 @@ from discord.ext.commands.core import group
 from random import *
 
 class 커맨드_알리미(Cog):
-    @command(name='커맨드_리스트')
+    @command(name='커맨드')
     async def 알려줘_리스트(self, ctx: Context):
         embed = discord.Embed(title="*커맨드 리스트*", description="　", color=0x00ffff)
                 
