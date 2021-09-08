@@ -3,10 +3,10 @@ from discord.ext.commands import Cog, Bot, command, Context
 from discord.ext.commands.core import group
 from random import *
 
-class 놀아줘(Cog):
-    @command(name='놀아줘 리스트')
+class 놀음거리(Cog):
+    @command(name='놀음거리_리스트')
     async def 놀아줘_리스트(self, ctx: Context):
-        embed = discord.Embed(title="*곰띠님 놀아줘 리스트*", description="　", color=0x00ffff)
+        embed = discord.Embed(title="*놀음거리 리스트*", description="　", color=0x00ffff)
             
         embed.add_field(name="곰띠님 랜덤숫자", value="1부터 설정한 값에서 랜덤으로 하나를 배출합니다", inline=False)
         embed.add_field(name="곰띠님 랜덤단어", value="단어1, 단어2, 단어3 ..... 중에서 랜덤으로 하나를 배출합니다", inline=False)
@@ -33,4 +33,4 @@ class 놀아줘(Cog):
 
 
 def setup(bot: Bot):
-    bot.add_cog(놀아줘())
+    bot.add_cog(놀음거리())
