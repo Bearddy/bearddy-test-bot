@@ -70,8 +70,8 @@ class 유용한기능(Cog):
         embed.add_field(name="곰띠님 안녕", value="랜덤으로 다양하게 말합니다", inline=False)
         embed.add_field(name="곰띠님 투표 질문/항목1/항목2/항목3....", value="항목1 ~... 마지막 항목까지 투표를 진행합니다", inline=False)
         embed.add_field(name="곰띠님 채팅청소 [숫자]", value="[숫자] 만큼의 채팅을 지웁니다 (관리자 권한만 사용가능)", inline=False)
-        embed.add_field(name="곰띠님 알려줘 리스트", value="알려줘에 관한 명령어 리스트를 알려줍니다", inline=False)
-        embed.add_field(name="곰띠님 놀아줘 리스트", value="놀아줘에 관한 명령어 리스트를 알려줍니다", inline=False)
+        embed.add_field(name="곰띠님 커맨드", value="마크 커맨드에 관한 명령어 리스트를 알려줍니다", inline=False)
+        embed.add_field(name="곰띠님 놀아줘", value="놀음거리에 관한 명령어 리스트를 알려줍니다", inline=False)
         
 
         embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
