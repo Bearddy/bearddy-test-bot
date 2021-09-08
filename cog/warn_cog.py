@@ -49,7 +49,6 @@ class 경고명령어(Cog):
                     })
                     await ctx.send(f"성공적으로 {user.name}에게 {amount}개의 경고를 부여했습니다")
                     await ctx.send(f"{user.name}님의 경고 횟수 : {amount}번")
-                    await ctx.send(f"debug")
 
                 
                 
@@ -85,8 +84,9 @@ class 경고명령어(Cog):
                 for current_user in report['users']:
                     if current_user['id'] == user.id:
                         if (current_user['warn_count'] - amount) < 0:
-                            current_user['warn_count'] = 0
                             await ctx.send(f"성공적으로 {user.name}의 경고횟수에서 {current_user['warn_count']}을/를 뺐습니다")
+                            current_user['warn_count'] = 0
+                            
                         else:
                             current_user['warn_count'] -= amount
                             await ctx.send(f"성공적으로 {user.name}의 경고횟수에서 {amount}을/를 뺐습니다")
