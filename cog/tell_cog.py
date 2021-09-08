@@ -3,10 +3,10 @@ from discord.ext.commands import Cog, Bot, command, Context
 from discord.ext.commands.core import group
 from random import *
 
-class 알려줘(Cog):
-    @command(name='알려줘 리스트')
+class 커맨드_알리미(Cog):
+    @command(name='커맨드_리스트')
     async def 알려줘_리스트(self, ctx: Context):
-        embed = discord.Embed(title="*곰띠님 알려줘 리스트*", description="　", color=0x00ffff)
+        embed = discord.Embed(title="*커맨드 리스트*", description="　", color=0x00ffff)
                 
         embed.add_field(name="곰띠님 execute", value="execute 명령어에 대해 설명합니다", inline=False)
         embed.add_field(name="곰띠님 tp", value="tp 명령어에 대해 설명합니다", inline=False)
@@ -70,4 +70,4 @@ class 알려줘(Cog):
 
 
 def setup(bot: Bot):
-    bot.add_cog(알려줘())
+    bot.add_cog(커맨드_알리미())
