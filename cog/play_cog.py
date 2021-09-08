@@ -4,12 +4,12 @@ from discord.ext.commands.core import group
 from random import *
 
 class 놀음거리(Cog):
-    @command(name='놀음거리_리스트')
+    @command(name='놀아줘')
     async def 놀아줘_리스트(self, ctx: Context):
         embed = discord.Embed(title="*놀음거리 리스트*", description="　", color=0x00ffff)
             
-        embed.add_field(name="곰띠님 랜덤숫자", value="1부터 설정한 값에서 랜덤으로 하나를 배출합니다", inline=False)
-        embed.add_field(name="곰띠님 랜덤단어", value="단어1, 단어2, 단어3 ..... 중에서 랜덤으로 하나를 배출합니다", inline=False)
+        embed.add_field(name="곰띠님 랜덤숫자 [숫자]", value="1부터 [숫자]에서 랜덤으로 하나를 배출합니다", inline=False)
+        embed.add_field(name="곰띠님 랜덤단어 단어1/단어2/단어3...", value="단어1, 단어2, 단어3 ..... 중에서 랜덤으로 하나를 배출합니다", inline=False)
 
         embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
         embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
