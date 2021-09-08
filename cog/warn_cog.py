@@ -53,8 +53,8 @@ class 경고명령어(Cog):
 
                 await ctx.send(embed=embed)
                 break
-            else:
-                await ctx.send(f"{user.name}님은 경고가 없는 클린한 사람입니다")  
+        else:
+            await ctx.send(f"{user.name}님은 경고가 없는 클린한 사람입니다")  
 
 
 def setup(bot: Bot):
