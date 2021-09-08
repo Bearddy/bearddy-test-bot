@@ -1,9 +1,12 @@
 import discord
 from discord.ext.commands import Cog, Bot, command, Context
 from discord.ext.commands.core import group
+from discord.ext.commands.errors import CommandError, CommandNotFound
 from random import *
 
+
 class 유용한기능(Cog):
+
     @command()
     async def 안녕(self, ctx: Context):
         """
@@ -79,6 +82,14 @@ class 유용한기능(Cog):
 
         await ctx.send(embed=embed)
 
+
+    @Cog.listener()
+    async def on_command_error(self, ctx: Context, error: CommandError):
+        if isinstance(error, CommandNotFound):
+            await ctx.send('해당 명령어가가 존재하는지 확인해주세요')
+        else:
+            await ctx.send('명령어 실행중 알수없는 오류가 발생했습니다')
+        
 
 def setup(bot: Bot):
     bot.add_cog(유용한기능())
