@@ -33,7 +33,7 @@ class 계산기(Cog):
     @계산기.command()
     async def 곱하기(self, ctx: Context, *, nums: str): 
         num_list = nums.split(' ')
-        answer = 0
+        answer = 1
         for i in range(len(num_list)):
            
             answer *= int(num_list[i])
@@ -44,7 +44,7 @@ class 계산기(Cog):
     @계산기.command()
     async def 나누기(self, ctx: Context, *, nums: str): 
         num_list = nums.split(' ')
-        answer = 0
+        answer = 1
         for i in range(len(num_list)):
            
             answer /= int(num_list[i])
