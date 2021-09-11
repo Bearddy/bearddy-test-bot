@@ -63,16 +63,19 @@ class 경고명령어(Cog):
     async def 경고확인(self, ctx, user:discord.User):
         for current_user in report['users']:
             if user.id == current_user['id']:
-                embed = discord.Embed(title=f"{user.name}님의 경고판", description="　", color=0xff0000)
-                
-                embed.add_field(name="경고 횟수 : ", value=f"{current_user['warn_count']}번", inline=False)
-                embed.add_field(name="경고 사유:", value=f"{','.join(current_user['reasons'])}", inline=False)
-                
-                embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
-                embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
+                if not current_user['warn_count'] == 0:
+                    embed = discord.Embed(title=f"{user.name}님의 경고판", description="　", color=0xff0000)
+                    
+                    embed.add_field(name="경고 횟수 : ", value=f"{current_user['warn_count']}번", inline=False)
+                    embed.add_field(name="경고 사유:", value=f"{','.join(current_user['reasons'])}", inline=False)
+                    
+                    embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
+                    embed.set_thumbnail(url="https://ifh.cc/g/5LIwNe.jpg")
 
-                await ctx.send(embed=embed)
-                break
+                    await ctx.send(embed=embed)
+                    break   
+                else:
+                    await ctx.send(f"{user.name}님은 경고가 없는 클린한 사람입니다") 
         else:
             await ctx.send(f"{user.name}님은 경고가 없는 클린한 사람입니다") 
 
