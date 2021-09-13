@@ -21,7 +21,7 @@ class 놀음거리(Cog):
         if num1 < num2:
 
             if num2 < 2147483647 and num2 > 0 :
-                rand = int(random() * num2) + num1
+                rand = int(random() * (num2 - num1 + 1)) + num1
                 await ctx.send(f"{num1}부터 {num2}중에서 랜덤으로 {rand} 이/가 나왔습니다")
             elif num2 < 0 or num2 > 2147483647:
                 await ctx.send("0이하의 정수거나 값이 너무 크면 곰띠봇이 힘들어해요 ㅠㅠ")
