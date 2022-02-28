@@ -48,17 +48,21 @@ class 유용한기능(Cog):
             await ctx.send("관리자 권한이 없습니다!")
 
 
-    @command(name='투표')
-    async def vote_(self, ctx: Context, *, list: str):
+    @command(pass_context = True)
+    async def 투표해줘(self, ctx: Context, *, list: str):
+        emoji = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣']
         vote_list = list.split("/")
         if(len(vote_list) > 6):
             await ctx.send("투표 항목이 너무 많으면 도배가 될수있으므로 5개 이하로 해주세요")
         else:
-            embed = discord.Embed(title="★투표★   ->   " + vote_list[0], description=" ", color=0x00ff00)
-            await ctx.send(embed=embed)
+            embed = discord.Embed(title="🎉투표🎉", description="**" + vote_list[0] + "**", color=0x00ff00)
+            
             for i in range(1, len(vote_list)):
-                choose = await ctx.send("```" + str(i) + ". " + vote_list[i] + "```")
-                await choose.add_reaction('👍')
+                embed.add_field(name="ㅤ", value=str(i) + "." + vote_list[i], inline=False)
+            msg = await ctx.send(embed=embed)
+            
+            for i in range(0, len(vote_list)-1):
+                await msg.add_reaction(emoji[i])
 
     @command()
     async def 도와줘(self, ctx: Context):
@@ -69,11 +73,11 @@ class 유용한기능(Cog):
 
         embed = discord.Embed(title="*명령어 리스트*", description="　", color=0x00ffff)
 
-        embed.add_field(name="곰띠님 안녕", value="랜덤으로 다양하게 말합니다", inline=False)
-        embed.add_field(name="곰띠님 투표 질문/항목1/항목2/항목3....", value="항목1 ~... 마지막 항목까지 투표를 진행합니다", inline=False)
-        embed.add_field(name="곰띠님 채팅청소 [숫자]", value="[숫자] 만큼의 채팅을 지웁니다 (관리자 권한만 사용가능)", inline=False)
-        embed.add_field(name="곰띠님 커맨드", value="마크 커맨드에 관한 명령어 리스트를 알려줍니다", inline=False)
-        embed.add_field(name="곰띠님 놀아줘", value="놀음거리에 관한 명령어 리스트를 알려줍니다", inline=False)
+        embed.add_field(name="곰띠야 안녕", value="랜덤으로 다양하게 말합니다", inline=False)
+        embed.add_field(name="곰띠야 투표해줘 질문/항목1/항목2/항목3....", value="항목1 ~... 마지막 항목까지 투표를 진행합니다", inline=False)
+        embed.add_field(name="곰띠야 채팅청소 [숫자]", value="[숫자] 만큼의 채팅을 지웁니다 (관리자 권한만 사용가능)", inline=False)
+        embed.add_field(name="곰띠야 커맨드", value="마크 커맨드에 관한 명령어 리스트를 알려줍니다", inline=False)
+        embed.add_field(name="곰띠야 놀아줘", value="놀음거리에 관한 명령어 리스트를 알려줍니다", inline=False)
         
 
         embed.set_footer(text="버그제보는 곰띠/Bearddy#4453 로 해주세요", icon_url="https://ifh.cc/g/nxRpdO.png")
