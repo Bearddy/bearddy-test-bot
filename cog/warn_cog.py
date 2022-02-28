@@ -47,8 +47,8 @@ class 경고명령어(Cog):
                     'kicked':False,
                     'reasons': [reason,]
                     })
-                    await ctx.send(f"성공적으로 {user.name}에게 {amount}개의 경고를 부여했습니다")
-                    await ctx.send(f"{user.name}님의 경고 횟수 : {amount}번")
+                await ctx.send(f"성공적으로 {user.name}에게 {amount}개의 경고를 부여했습니다")
+                await ctx.send(f"{user.name}님의 경고 횟수 : {amount}번")
 
                 
                 
